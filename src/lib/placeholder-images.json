@@ -1,0 +1,17 @@
+{
+  "avatar1": {
+    "src": "https://picsum.photos/seed/1/32/32",
+    "width": 32,
+    "height": 32
+  },
+  "avatar2": {
+    "src": "https://picsum.photos/seed/2/32/32",
+    "width": 32,
+    "height": 32
+  },
+  "avatar3": {
+    "src": "https://picsum.photos/seed/3/32/32",
+    "width": 32,
+    "height": 32
+  }
+}

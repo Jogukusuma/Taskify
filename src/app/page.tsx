@@ -1,15 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, BrainCircuit, CheckCircle, Zap } from "lucide-react";
+import { ArrowRight, BrainCircuit, CheckCircle, Star, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
+import Image from "next/image";
+import placeholderImages from "@/lib/placeholder-images.json";
+
 
 export default function LandingPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-background">
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center">
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
+      <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="container flex h-16 max-w-screen-2xl items-center">
           <div className="mr-4 flex">
             <Link href="/" className="flex items-center space-x-2">
               <svg
@@ -27,14 +30,14 @@ export default function LandingPage() {
                 <path d="M7 16h9" />
                 <path d="M9 21h6" />
               </svg>
-              <span className="font-bold sm:inline-block font-headline text-xl">
+              <span className="font-bold sm:inline-block text-xl">
                 TaskMaster
               </span>
             </Link>
           </div>
           <div className="flex flex-1 items-center justify-end space-x-2">
             <ThemeToggle />
-            <Button asChild>
+            <Button asChild className="rounded-full">
               <Link href="/dashboard">Get Started</Link>
             </Button>
           </div>
@@ -43,26 +46,65 @@ export default function LandingPage() {
 
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="container mx-auto px-4 py-20 text-center">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter mb-4 text-primary">
-            Master Your Day, Intelligently.
-          </h1>
-          <p className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground mb-8">
-            TaskMaster is a smart to-do list that helps you focus on what truly matters. Stop planning, start doing.
-          </p>
-          <Button size="lg" asChild>
-            <Link href="/dashboard">
-              Get Started for Free <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </Button>
+        <section className="relative">
+          <div className="container relative mx-auto px-4 py-24 text-center md:py-32">
+             <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem] dark:bg-background dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)]"></div>
+            <div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_500px_at_50%_200px,#3e3e3e,transparent)] dark:bg-[radial-gradient(circle_500px_at_50%_200px,#3e3e3e,transparent)]"></div>
+
+            <div className="mb-8 flex justify-center space-x-4">
+              <div className="flex items-center">
+                <div className="flex -space-x-2">
+                  <Image
+                    className="inline-block h-8 w-8 rounded-full ring-2 ring-background"
+                    data-ai-hint="person avatar"
+                    {...placeholderImages.avatar1}
+                    alt="Satisfied customer"
+                  />
+                  <Image
+                    className="inline-block h-8 w-8 rounded-full ring-2 ring-background"
+                    data-ai-hint="person avatar"
+                    {...placeholderImages.avatar2}
+                    alt="Satisfied customer"
+                  />
+                  <Image
+                    className="inline-block h-8 w-8 rounded-full ring-2 ring-background"
+                    data-ai-hint="person avatar"
+                    {...placeholderImages.avatar3}
+                    alt="Satisfied customer"
+                  />
+                </div>
+                <div className="ml-4 text-left">
+                  <div className="flex items-center">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  <p className="text-sm text-muted-foreground">100K+ Satisfied Customers</p>
+                </div>
+              </div>
+            </div>
+
+            <h1 className="text-5xl font-bold tracking-tighter sm:text-6xl md:text-7xl">
+              Organize your <br />
+              <span className="font-serif italic text-primary">work and life.</span>
+            </h1>
+            <p className="max-w-2xl mx-auto text-lg text-muted-foreground mt-6 mb-10">
+              Simplify life for you and your team. The most productive to-do list app.
+            </p>
+            <Button size="lg" asChild className="rounded-full shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-shadow">
+              <Link href="/dashboard">
+                Start your free trial <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+          </div>
         </section>
 
         {/* Features Section */}
-        <section className="bg-secondary/50">
+        <section className="bg-secondary/30 dark:bg-background">
            <div className="container mx-auto px-4 py-20">
-            <h2 className="text-3xl font-bold text-center mb-12">Why TaskMaster?</h2>
+            <h2 className="text-4xl font-bold text-center mb-12 tracking-tighter">Why TaskMaster?</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center p-6 rounded-lg bg-card/50 border">
                 <div className="p-4 bg-primary/20 rounded-full mb-4">
                   <BrainCircuit className="h-8 w-8 text-primary" />
                 </div>
@@ -71,7 +113,7 @@ export default function LandingPage() {
                   Our smart assistant suggests tasks based on your current workload and habits, keeping you on track.
                 </p>
               </div>
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center p-6 rounded-lg bg-card/50 border">
                 <div className="p-4 bg-primary/20 rounded-full mb-4">
                   <Zap className="h-8 w-8 text-primary" />
                 </div>
@@ -80,7 +122,7 @@ export default function LandingPage() {
                   A clean, intuitive interface designed for speed. Add, manage, and complete tasks without the clutter.
                 </p>
               </div>
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center p-6 rounded-lg bg-card/50 border">
                 <div className="p-4 bg-primary/20 rounded-full mb-4">
                   <CheckCircle className="h-8 w-8 text-primary" />
                 </div>
@@ -95,11 +137,11 @@ export default function LandingPage() {
 
         {/* CTA Section */}
         <section className="container mx-auto px-4 py-20 text-center">
-            <h2 className="text-3xl font-bold mb-4">Ready to Boost Your Productivity?</h2>
-            <p className="text-muted-foreground mb-8 text-lg">
+            <h2 className="text-4xl font-bold mb-4 tracking-tighter">Ready to Boost Your Productivity?</h2>
+            <p className="text-muted-foreground mb-8 text-lg max-w-xl mx-auto">
                 Join TaskMaster today and turn your to-do list into a to-done list.
             </p>
-            <Button size="lg" asChild>
+            <Button size="lg" asChild className="rounded-full shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-shadow">
               <Link href="/dashboard">
                 Start Mastering Your Tasks
               </Link>
@@ -108,7 +150,7 @@ export default function LandingPage() {
 
       </main>
 
-      <footer className="text-center py-4 text-muted-foreground text-sm">
+      <footer className="text-center py-6 text-muted-foreground text-sm border-t border-border/40">
         <p>TaskMaster &copy; {new Date().getFullYear()}</p>
       </footer>
     </div>
