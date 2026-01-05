@@ -57,12 +57,10 @@ export default function DashboardPage() {
     try {
       const savedTasks = localStorage.getItem("tasks");
       if (savedTasks) {
-        const parsedTasks = JSON.parse(savedTasks, (key, value) => {
-          if (key === 'dueDate' && value) {
-            return new Date(value);
-          }
-          return value;
-        });
+        const parsedTasks = JSON.parse(savedTasks).map((task: Task) => ({
+          ...task,
+          dueDate: task.dueDate ? new Date(task.dueDate) : null,
+        }));
         setTasks(parsedTasks);
       } else {
         setTasks(initialTasks);
