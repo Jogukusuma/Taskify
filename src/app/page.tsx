@@ -34,8 +34,11 @@ export default function LandingPage() {
           </div>
           <div className="flex flex-1 items-center justify-end space-x-2">
             <ThemeToggle />
+            <Button asChild variant="ghost">
+              <Link href="/login">Login</Link>
+            </Button>
             <Button asChild className="rounded-full">
-              <Link href="/dashboard">Get Started</Link>
+              <Link href="/signup">Sign Up</Link>
             </Button>
           </div>
         </div>
@@ -106,7 +109,7 @@ export default function LandingPage() {
                 Join Taskify today and turn your to-do list into a to-done list.
             </p>
             <Button size="lg" asChild className="rounded-full shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-shadow">
-              <Link href="/dashboard">
+              <Link href="/signup">
                 Start Mastering Your Tasks
               </Link>
             </Button>

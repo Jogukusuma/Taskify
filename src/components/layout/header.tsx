@@ -4,6 +4,7 @@ import type { Task } from "@/types";
 import { AiSuggestion } from "@/components/tasks/ai-suggestion";
 import { ThemeToggle } from "../theme-toggle";
 import Link from 'next/link';
+import { Button } from "../ui/button";
 
 interface HeaderProps {
   tasks: Task[];
@@ -11,6 +12,8 @@ interface HeaderProps {
 }
 
 export function Header({ tasks, onAddTask }: HeaderProps) {
+  const isLoggedIn = false; // Placeholder for auth state
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
@@ -37,8 +40,23 @@ export function Header({ tasks, onAddTask }: HeaderProps) {
           </Link>
         </div>
         <div className="flex flex-1 items-center justify-end space-x-2">
-          <AiSuggestion tasks={tasks} onAddTask={onAddTask} />
-          <ThemeToggle />
+          {isLoggedIn ? (
+            <>
+              <AiSuggestion tasks={tasks} onAddTask={onAddTask} />
+              <ThemeToggle />
+              {/* Add User Dropdown here */}
+            </>
+          ) : (
+            <>
+              <ThemeToggle />
+              <Button asChild variant="ghost">
+                <Link href="/login">Login</Link>
+              </Button>
+              <Button asChild>
+                <Link href="/signup">Sign Up</Link>
+              </Button>
+            </>
+          )}
         </div>
       </div>
     </header>
