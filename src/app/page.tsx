@@ -46,8 +46,7 @@ export default function LandingPage() {
         <section className="relative">
           <div className="container relative mx-auto px-4 py-24 text-center md:py-32">
              <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem] dark:bg-background dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)]"></div>
-            <div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_500px_at_50%_200px,#3e3e3e,transparent)] dark:bg-[radial-gradient(circle_500px_at_50%_200px,#3e3e3e,transparent)]"></div>
-
+            
             <h1 className="text-5xl font-bold tracking-tighter sm:text-6xl md:text-7xl">
               Organize your <br />
               <span className="font-serif italic text-primary">work and life.</span>
