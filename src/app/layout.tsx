@@ -17,7 +17,7 @@ const playfairDisplay = PlayfairDisplay({
 
 
 export const metadata: Metadata = {
-  title: 'TaskMaster',
+  title: 'Taskify',
   description: 'A simple and intelligent to-do list app.',
 };
 

@@ -47,7 +47,10 @@ export default function DashboardPage() {
     try {
       const savedTasks = localStorage.getItem("tasks");
       if (savedTasks) {
-        const parsedTasks = JSON.parse(savedTasks);
+        const parsedTasks = JSON.parse(savedTasks).map((task: any) => ({
+          ...task,
+          dueDate: task.dueDate ? new Date(task.dueDate) : null,
+        }));
         setTasks(parsedTasks);
       } else {
         setTasks(initialTasks.map(task => ({ ...task, id: generateId() })));
@@ -107,7 +110,7 @@ export default function DashboardPage() {
         />
       </main>
       <footer className="text-center py-4 text-muted-foreground text-sm">
-        <p>Built with ❤️ for productivity. TaskMaster &copy; {new Date().getFullYear()}</p>
+        <p>Built with ❤️ for productivity. Taskify &copy; {new Date().getFullYear()}</p>
       </footer>
     </div>
   );

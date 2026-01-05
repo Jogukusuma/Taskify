@@ -28,7 +28,7 @@ export default function LandingPage() {
                 <path d="M9 21h6" />
               </svg>
               <span className="font-bold sm:inline-block text-xl">
-                TaskMaster
+                Taskify
               </span>
             </Link>
           </div>
@@ -65,7 +65,7 @@ export default function LandingPage() {
         {/* Features Section */}
         <section className="bg-secondary/30 dark:bg-background">
            <div className="container mx-auto px-4 py-20">
-            <h2 className="text-4xl font-bold text-center mb-12 tracking-tighter">Why TaskMaster?</h2>
+            <h2 className="text-4xl font-bold text-center mb-12 tracking-tighter">Why Taskify?</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <div className="flex flex-col items-center p-6 rounded-lg bg-card/50 border">
                 <div className="p-4 bg-primary/20 rounded-full mb-4">
@@ -102,7 +102,7 @@ export default function LandingPage() {
         <section className="container mx-auto px-4 py-20 text-center">
             <h2 className="text-4xl font-bold mb-4 tracking-tighter">Ready to Boost Your Productivity?</h2>
             <p className="text-muted-foreground mb-8 text-lg max-w-xl mx-auto">
-                Join TaskMaster today and turn your to-do list into a to-done list.
+                Join Taskify today and turn your to-do list into a to-done list.
             </p>
             <Button size="lg" asChild className="rounded-full shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-shadow">
               <Link href="/dashboard">
@@ -114,7 +114,7 @@ export default function LandingPage() {
       </main>
 
       <footer className="text-center py-6 text-muted-foreground text-sm border-t border-border/40">
-        <p>TaskMaster &copy; {new Date().getFullYear()}</p>
+        <p>Taskify &copy; {new Date().getFullYear()}</p>
       </footer>
     </div>
   );

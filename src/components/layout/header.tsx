@@ -32,7 +32,7 @@ export function Header({ tasks, onAddTask }: HeaderProps) {
               <path d="M9 21h6" />
             </svg>
             <span className="font-bold sm:inline-block font-headline text-xl">
-              TaskMaster
+              Taskify
             </span>
           </Link>
         </div>
