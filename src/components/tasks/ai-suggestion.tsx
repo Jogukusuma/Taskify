@@ -1,9 +1,15 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { Sparkles } from "lucide-react";
+import { Sparkles, PlusCircle } from "lucide-react";
 import type { Task } from "@/types";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -29,7 +35,9 @@ export function AiSuggestion({ tasks, onAddTask }: AiSuggestionProps) {
   const [suggestion, setSuggestion] = useState<string | null>(null);
   const [isError, setIsError] = useState(false);
   const [isAddTaskDialogOpen, setAddTaskDialogOpen] = useState(false);
-  const [taskToSuggest, setTaskToSuggest] = useState<Partial<Task> | undefined>(undefined);
+  const [taskToSuggest, setTaskToSuggest] = useState<
+    Partial<Task> | undefined
+  >(undefined);
 
   const { toast } = useToast();
 
@@ -55,13 +63,32 @@ export function AiSuggestion({ tasks, onAddTask }: AiSuggestionProps) {
     setSuggestion(null);
     setAddTaskDialogOpen(true);
   };
+  
+  const handleManualAdd = () => {
+    setTaskToSuggest(undefined);
+    setAddTaskDialogOpen(true);
+  }
 
   return (
     <>
-      <Button variant="outline" onClick={handleGetSuggestion} disabled={isPending}>
-        <Sparkles className={cn("mr-2 h-4 w-4", isPending && "animate-spin")} />
-        {isPending ? "Thinking..." : "Suggest Task"}
-      </Button>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="outline" disabled={isPending}>
+            <Sparkles className={cn("mr-2 h-4 w-4", isPending && "animate-spin")} />
+            {isPending ? "Thinking..." : "New Task"}
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+          <DropdownMenuItem onClick={handleGetSuggestion}>
+            <Sparkles className="mr-2 h-4 w-4" />
+            <span>Get AI Suggestion</span>
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={handleManualAdd}>
+            <PlusCircle className="mr-2 h-4 w-4" />
+            <span>Add Manually</span>
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
 
       <AlertDialog open={!!suggestion} onOpenChange={() => setSuggestion(null)}>
         <AlertDialogContent>
@@ -69,9 +96,7 @@ export function AiSuggestion({ tasks, onAddTask }: AiSuggestionProps) {
             <AlertDialogTitle>
               {isError ? "Oops!" : "AI Task Suggestion"}
             </AlertDialogTitle>
-            <AlertDialogDescription>
-              {suggestion}
-            </AlertDialogDescription>
+            <AlertDialogDescription>{suggestion}</AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Dismiss</AlertDialogCancel>
@@ -88,12 +113,12 @@ export function AiSuggestion({ tasks, onAddTask }: AiSuggestionProps) {
         isOpen={isAddTaskDialogOpen}
         onOpenChange={setAddTaskDialogOpen}
         onAddTask={(data) => {
-            onAddTask(data);
-            toast({
-                title: "Task Added!",
-                description: `"${data.title}" has been added to your list.`,
-                className: "bg-accent text-accent-foreground border-accent",
-            });
+          onAddTask(data);
+          toast({
+            title: "Task Added!",
+            description: `"${data.title}" has been added to your list.`,
+            className: "bg-accent text-accent-foreground border-accent",
+          });
         }}
         taskToEdit={taskToSuggest}
       />
