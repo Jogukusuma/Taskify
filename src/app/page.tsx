@@ -44,7 +44,7 @@ export default function LandingPage() {
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative">
-        <div className="absolute inset-0 -z-10 h-full w-full bg-[#000000] bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px]"><div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-primary/20 opacity-20 blur-[100px]"></div></div>
+        <div className="absolute inset-0 -z-10 h-full w-full bg-[#0a191e] bg-[radial-gradient(#14383d_1px,transparent_1px)] [background-size:16px_16px]"></div>
           <div className="container relative mx-auto px-4 py-24 text-center md:py-32">
             <h1 className="text-5xl font-bold tracking-tighter sm:text-6xl md:text-7xl">
               Organize your <br />
