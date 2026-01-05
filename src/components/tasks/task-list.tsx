@@ -26,9 +26,7 @@ export function TaskList({ tasks, onToggleComplete, onDeleteTask, onUpdateTask }
       if (a.completed !== b.completed) {
         return a.completed ? 1 : -1;
       }
-      const aDate = a.dueDate ? new Date(a.dueDate).getTime() : Infinity;
-      const bDate = b.dueDate ? new Date(b.dueDate).getTime() : Infinity;
-      return aDate - bDate;
+      return 0;
   });
 
   return (

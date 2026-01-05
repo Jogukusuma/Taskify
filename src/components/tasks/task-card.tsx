@@ -1,14 +1,12 @@
 "use client";
 
 import {
-  CalendarIcon,
   MoreVertical,
   Pencil,
   Trash2,
 } from "lucide-react";
 import type { Task } from "@/types";
 import { cn } from "@/lib/utils";
-import { format } from "date-fns";
 import {
   Card,
   CardContent,
@@ -27,7 +25,6 @@ import {
 import { AddTaskDialog } from "./add-task-dialog";
 import { useState } from "react";
 import { Checkbox } from "../ui/checkbox";
-import { Badge } from "../ui/badge";
 
 interface TaskCardProps {
   task: Task;
@@ -44,15 +41,12 @@ export function TaskCard({
 }: TaskCardProps) {
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
 
-  const isOverdue = task.dueDate && !task.completed && new Date(task.dueDate) < new Date();
-
   return (
     <>
       <Card
         className={cn(
           "flex flex-col h-full transition-all duration-300",
-          task.completed ? "bg-card/60 border-accent/50" : "bg-card",
-          isOverdue && "border-destructive/50"
+          task.completed ? "bg-card/60 border-accent/50" : "bg-card"
         )}
       >
         <CardHeader className="flex flex-row items-start gap-4 space-y-0 pb-4">
@@ -92,12 +86,6 @@ export function TaskCard({
 
         <CardFooter className="flex justify-between items-center">
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                {task.dueDate && (
-                    <Badge variant={isOverdue ? "destructive" : "secondary"} className="whitespace-nowrap">
-                        <CalendarIcon className="mr-1.5 h-4 w-4" />
-                        {format(new Date(task.dueDate), "MMM d, yyyy")}
-                    </Badge>
-                )}
             </div>
             
             <DropdownMenu>

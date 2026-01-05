@@ -8,40 +8,30 @@ import { TaskList } from "@/components/tasks/task-list";
 // Generate a unique ID
 const generateId = () => `task_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 
-const initialTasks: Task[] = [
+const initialTasks: Omit<Task, 'id'>[] = [
   {
-    id: generateId(),
     title: "Set up project structure",
     description: "Initialize Next.js app and set up folders for components, types, and lib.",
-    dueDate: new Date(new Date().setDate(new Date().getDate() - 2)),
     completed: true,
   },
   {
-    id: generateId(),
     title: "Design the UI",
     description: "Create mockups and decide on the color scheme and typography.",
-    dueDate: new Date(new Date().setDate(new Date().getDate() - 1)),
     completed: true,
   },
   {
-    id: generateId(),
     title: "Develop Task Components",
     description: "Build the TaskCard and TaskList components.",
-    dueDate: new Date(),
     completed: false,
   },
   {
-    id: generateId(),
     title: "Implement State Management",
     description: "Use React hooks to manage the state of tasks.",
-    dueDate: new Date(new Date().setDate(new Date().getDate() + 1)),
     completed: false,
   },
   {
-    id: generateId(),
     title: "Integrate AI suggestions",
     description: "Connect the GenAI flow to suggest new tasks.",
-    dueDate: new Date(new Date().setDate(new Date().getDate() + 3)),
     completed: false,
   },
 ];
@@ -57,17 +47,14 @@ export default function DashboardPage() {
     try {
       const savedTasks = localStorage.getItem("tasks");
       if (savedTasks) {
-        const parsedTasks = JSON.parse(savedTasks).map((task: Task) => ({
-          ...task,
-          dueDate: task.dueDate ? new Date(task.dueDate) : null,
-        }));
+        const parsedTasks = JSON.parse(savedTasks);
         setTasks(parsedTasks);
       } else {
-        setTasks(initialTasks);
+        setTasks(initialTasks.map(task => ({ ...task, id: generateId() })));
       }
     } catch (error) {
       console.error("Failed to load tasks from local storage", error);
-      setTasks(initialTasks);
+      setTasks(initialTasks.map(task => ({ ...task, id: generateId() })));
     }
   }, []);
 
