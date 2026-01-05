@@ -4,6 +4,7 @@ import type { Task } from "@/types";
 import { AddTaskDialog } from "@/components/tasks/add-task-dialog";
 import { AiSuggestion } from "@/components/tasks/ai-suggestion";
 import { ThemeToggle } from "../theme-toggle";
+import Link from 'next/link';
 
 interface HeaderProps {
   tasks: Task[];
@@ -15,7 +16,7 @@ export function Header({ tasks, onAddTask }: HeaderProps) {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
         <div className="mr-4 flex">
-          <a href="/" className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -34,7 +35,7 @@ export function Header({ tasks, onAddTask }: HeaderProps) {
             <span className="font-bold sm:inline-block font-headline text-xl">
               TaskMaster
             </span>
-          </a>
+          </Link>
         </div>
         <div className="flex flex-1 items-center justify-end space-x-2">
           <AiSuggestion tasks={tasks} onAddTask={onAddTask} />
