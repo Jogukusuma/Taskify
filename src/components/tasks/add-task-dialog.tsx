@@ -180,7 +180,7 @@ export function AddTaskDialog({
                     <PopoverContent className="w-auto p-0" align="start">
                       <Calendar
                         mode="single"
-                        selected={field.value ?? undefined}
+                        selected={field.value ? new Date(field.value) : undefined}
                         onSelect={(date) => field.onChange(date ?? null)}
                         disabled={(date) => date < new Date(new Date().setDate(new Date().getDate() - 1))}
                         initialFocus
