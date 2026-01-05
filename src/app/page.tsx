@@ -1,12 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, BrainCircuit, CheckCircle, Star, Zap } from "lucide-react";
+import { ArrowRight, BrainCircuit, CheckCircle, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
-import Image from "next/image";
-import placeholderImages from "@/lib/placeholder-images.json";
-
 
 export default function LandingPage() {
   return (
@@ -50,39 +47,6 @@ export default function LandingPage() {
           <div className="container relative mx-auto px-4 py-24 text-center md:py-32">
              <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem] dark:bg-background dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)]"></div>
             <div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_500px_at_50%_200px,#3e3e3e,transparent)] dark:bg-[radial-gradient(circle_500px_at_50%_200px,#3e3e3e,transparent)]"></div>
-
-            <div className="mb-8 flex justify-center space-x-4">
-              <div className="flex items-center">
-                <div className="flex -space-x-2">
-                  <Image
-                    className="inline-block h-8 w-8 rounded-full ring-2 ring-background"
-                    data-ai-hint="person avatar"
-                    {...placeholderImages.avatar1}
-                    alt="Satisfied customer"
-                  />
-                  <Image
-                    className="inline-block h-8 w-8 rounded-full ring-2 ring-background"
-                    data-ai-hint="person avatar"
-                    {...placeholderImages.avatar2}
-                    alt="Satisfied customer"
-                  />
-                  <Image
-                    className="inline-block h-8 w-8 rounded-full ring-2 ring-background"
-                    data-ai-hint="person avatar"
-                    {...placeholderImages.avatar3}
-                    alt="Satisfied customer"
-                  />
-                </div>
-                <div className="ml-4 text-left">
-                  <div className="flex items-center">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-                  <p className="text-sm text-muted-foreground">100K+ Satisfied Customers</p>
-                </div>
-              </div>
-            </div>
 
             <h1 className="text-5xl font-bold tracking-tighter sm:text-6xl md:text-7xl">
               Organize your <br />
