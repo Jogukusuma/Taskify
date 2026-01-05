@@ -1,0 +1,69 @@
+diff --git a/node_modules/next-themes/dist/index.js b/node_modules/next-themes/dist/index.js
+index 720835f..e393a55 100644
+--- a/node_modules/next-themes/dist/index.js
++++ b/node_modules/next-themes/dist/index.js
+@@ -1,8 +1,8 @@
+ 'use client';
+ 
+-var import_react = require("react");
++var React = require("react");
+ 
+-// src/index.tsx
++// /home/user/test-app/node_modules/next-themes/src/index.tsx
+ var ThemeContext = React.createContext(void 0);
+ var ThemeProvider = (props) => {
+   const context = React.useContext(ThemeContext);
+diff --git a/node_modules/next-themes/dist/index.mjs b/node_modules/next-themes/dist/index.mjs
+index 45a05b2..4b104ad 100644
+--- a/node_modules/next-themes/dist/index.mjs
++++ b/node_modules/next-themes/dist/index.mjs
+@@ -1,8 +1,8 @@
+ 'use client';
+ 
+-import {
+-  createContext,
+-  useContext,
+-  useState,
+-  useEffect,
+-  useCallback,
+-  useMemo
+-} from "react";
++var React = require("react");
++var { createContext, useContext, useState, useEffect, useCallback, useMemo } = React;
+ 
++// /home/user/test-app/node_modules/next-themes/src/index.tsx
+ var ThemeContext = createContext(void 0);
+ var ThemeProvider = (props) => {
+   const context = useContext(ThemeContext);
+diff --git a/node_modules/next-themes/package.json b/node_modules/next-themes/package.json
+index 541c881..322bff3 100644
+--- a/node_modules/next-themes/package.json
++++ b/node_modules/next-themes/package.json
+@@ -37,7 +37,7 @@
+     "tomer": "https://tomer.im"
+   },
+   "peerDependencies": {
+-    "react": "^16.8 || ^17 || ^18"
++    "react": "^16.8 || ^17 || ^18 || ^19"
+   },
+   "peerDependenciesMeta": {
+     "react-dom": {
+diff --git a/node_modules/next-themes/src/index.tsx b/node_modules/next-themes/src/index.tsx
+index 8c7b508..467472c 100644
+--- a/node_modules/next-themes/src/index.tsx
++++ b/node_modules/next-themes/src/index.tsx
+@@ -1,4 +1,4 @@
+-'use client'
++'use client';
+ 
+ import React, {
+   createContext,
+@@ -8,7 +8,7 @@
+   useEffect,
+   useCallback,
+   useMemo,
+-} from 'react'
++} from 'react';
+ 
+ type ThemeProviderProps = {
+   children: React.ReactNode

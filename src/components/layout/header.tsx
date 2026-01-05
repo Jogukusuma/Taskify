@@ -3,6 +3,7 @@
 import type { Task } from "@/types";
 import { AddTaskDialog } from "@/components/tasks/add-task-dialog";
 import { AiSuggestion } from "@/components/tasks/ai-suggestion";
+import { ThemeToggle } from "../theme-toggle";
 
 interface HeaderProps {
   tasks: Task[];
@@ -38,6 +39,7 @@ export function Header({ tasks, onAddTask }: HeaderProps) {
         <div className="flex flex-1 items-center justify-end space-x-2">
           <AiSuggestion tasks={tasks} onAddTask={onAddTask} />
           <AddTaskDialog onAddTask={onAddTask} />
+          <ThemeToggle />
         </div>
       </div>
     </header>
