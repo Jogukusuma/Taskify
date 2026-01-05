@@ -1,0 +1,119 @@
+{
+  "entities": {
+    "Task": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Task",
+      "type": "object",
+      "description": "Represents a single task in a to-do list.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Task entity."
+        },
+        "userId": {
+          "type": "string",
+          "description": "Reference to User. (Relationship: User 1:N Task)"
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of the task."
+        },
+        "dueDate": {
+          "type": "string",
+          "description": "The date and time when the task is due.",
+          "format": "date-time"
+        },
+        "completed": {
+          "type": "boolean",
+          "description": "Indicates whether the task has been completed."
+        },
+        "createdDate": {
+          "type": "string",
+          "description": "The date and time when the task was created.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "userId",
+        "description",
+        "dueDate",
+        "completed",
+        "createdDate"
+      ]
+    },
+    "User": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "User",
+      "type": "object",
+      "description": "Represents a user of the application.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the User entity."
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address of the user.",
+          "format": "email"
+        },
+        "name": {
+          "type": "string",
+          "description": "The user's display name."
+        }
+      },
+      "required": [
+        "id",
+        "email",
+        "name"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/users/{userId}",
+        "definition": {
+          "entityName": "User",
+          "schema": {
+            "$ref": "#/backend/entities/User"
+          },
+          "description": "Stores user profiles. The userId is the Firebase Auth UID.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The Firebase Auth UID of the user."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/tasks/{taskId}",
+        "definition": {
+          "entityName": "Task",
+          "schema": {
+            "$ref": "#/backend/entities/Task"
+          },
+          "description": "Stores tasks associated with a specific user. Tasks are owned by the user, using the path-based ownership pattern. The userId is used to identify the owner.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The Firebase Auth UID of the user who owns the task."
+            },
+            {
+              "name": "taskId",
+              "description": "The unique ID of the task."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore structure is designed to provide a secure and scalable solution for TaskMaster, a to-do list web application.  It leverages path-based ownership for user tasks to ensure data privacy and simplifies security rules. Authorization Independence is achieved as there is no `get()` calls made in rules. Segregation of data is achieved by storing tasks under each user document."
+  }
+}
