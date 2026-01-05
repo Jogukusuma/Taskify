@@ -44,9 +44,8 @@ export default function LandingPage() {
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative">
+          <div className="absolute inset-0 -z-10 h-full w-full bg-[#001f1a] bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
           <div className="container relative mx-auto px-4 py-24 text-center md:py-32">
-             <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem] dark:bg-background dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)]"></div>
-            
             <h1 className="text-5xl font-bold tracking-tighter sm:text-6xl md:text-7xl">
               Organize your <br />
               <span className="font-serif italic text-primary">work and life.</span>
