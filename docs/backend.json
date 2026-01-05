@@ -1,3 +1,4 @@
+
 {
   "entities": {
     "Task": {
@@ -18,11 +19,6 @@
           "type": "string",
           "description": "Detailed description of the task."
         },
-        "dueDate": {
-          "type": "string",
-          "description": "The date and time when the task is due.",
-          "format": "date-time"
-        },
         "completed": {
           "type": "boolean",
           "description": "Indicates whether the task has been completed."
@@ -37,7 +33,6 @@
         "id",
         "userId",
         "description",
-        "dueDate",
         "completed",
         "createdDate"
       ]
@@ -72,7 +67,7 @@
   "auth": {
     "providers": [
       "password",
-      "anonymous"
+      "google.com"
     ]
   },
   "firestore": {
